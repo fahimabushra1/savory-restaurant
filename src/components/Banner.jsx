@@ -1,22 +1,37 @@
-
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import banner1 from '../assets/images/banner-1.jpg';
+import banner2 from '../assets/images/banner-2.jpg';
+import banner3 from '../assets/images/banner-3.jpg';
+import banner4 from '../assets/images/banner-4.jpg';
+import banner5 from '../assets/images/banner-5.jpg';
+import banner6 from '../assets/images/banner-6.jpg';
+import banner7 from '../assets/images/banner-7.jpg';
 const Banner = () => {
     return (
-        <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content flex-col lg:flex-row">
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-      className="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-      <h1 className="text-5xl font-bold">Box Office News!</h1>
-      <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
-      <button className="btn btn-primary">Get Started</button>
-    </div>
-  </div>
-</div>
+        <Carousel>
+                <div>
+                    <img src={banner1} />
+                </div>
+                <div>
+                    <img src={banner2}/>
+                </div>
+                <div>
+                    <img src={banner3} />
+                </div>
+                <div>
+                    <img src={banner4} />
+                </div>
+                <div>
+                    <img src={banner5} />
+                </div>
+                <div>
+                    <img src={banner6} />
+                </div>
+                <div>
+                    <img src={banner7} />
+                </div>
+            </Carousel>
     );
 };
 
