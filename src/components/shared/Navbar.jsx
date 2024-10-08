@@ -40,6 +40,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 font-bold text-white">
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/menu'>Menu</Link></li>
+          <li><Link to='/order/salad'>order food</Link></li>
             <li><Link to='/about'>About</Link></li>
             <li><Link to='/dashboard'>Dashboard</Link></li>
             <li><Link to='/register'>Sign Up</Link></li>
