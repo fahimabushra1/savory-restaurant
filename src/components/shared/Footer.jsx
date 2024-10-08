@@ -39,7 +39,7 @@ const Footer = () => {
         </fieldset>
       </form>
     </footer>
-    <div className="footer items-center text-cyan-300 p-4">
+    <div className="footer items-center bg-slate-500 text-white p-4">
   <aside className="grid-flow-col items-center">
     <p>Copyright © ${new Date().getFullYear()} - All right reserved</p>
   </aside>
