@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import useAuth from '../hooks/useAuth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
+
+  const {signIn, user} = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(user?.email)
+  const from = location?.state?.from?.pathname || '/'
 
   useEffect(() => {
     loadCaptchaEnginge(6); 
@@ -26,6 +34,13 @@ const Login = () => {
       setDisabled(true)
     }
   }
+
+  useEffect(()=>{
+    if(user){
+      navigate(from,{replace:true})
+    }
+  },[user,navigate,from])
+
     return (
         <div>
         <div className="hero bg-base-200 min-h-screen">
@@ -55,6 +70,11 @@ const Login = () => {
         </div>
         <div className="form-control mt-6">
           <button disabled={disabled} className="btn btn-primary">Login</button>
+        </div>
+        <div>
+          <p>
+            New here?<Link to='/sign-up'className="text-red-500"> Sign up</Link>
+          </p>
         </div>
       </form>
     </div>
