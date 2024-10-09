@@ -41,9 +41,9 @@ const Navbar = () => {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/menu'>Menu</Link></li>
           <li><Link to='/order/salad'>order food</Link></li>
-            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/login'>log in</Link></li>
             <li><Link to='/dashboard'>Dashboard</Link></li>
-            <li><Link to='/register'>Sign Up</Link></li>
+            <li><Link to='/sign-up'>Sign Up</Link></li>
           </ul>
         </div>
         <div className="navbar-end font-bold text-white">
