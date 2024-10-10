@@ -4,12 +4,13 @@ import Footer from "../components/shared/Footer";
 
 const Main = () => {
     const location = useLocation();
-    const noNavbarFooter = location.pathname.includes("login")
+    const noNavbarFooterForLogin = location.pathname.includes("login");
+    const noNavbarFooterForSignUp = location.pathname.includes("sign-up");
     return (
         <div>
-         {noNavbarFooter || <Navbar/>}
+         {noNavbarFooterForLogin || noNavbarFooterForSignUp || <Navbar/>}
          <Outlet/>
-        {noNavbarFooter || <Footer/>}
+        {noNavbarFooterForLogin || noNavbarFooterForSignUp || <Footer/>}
         </div>
     );
 };

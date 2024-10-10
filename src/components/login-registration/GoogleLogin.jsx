@@ -1,5 +1,4 @@
-
-import googleIcon from "../../assets/images/googleIcon.jpg";
+import { FaGooglePlusG } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 
 const GoogleLogin = () => {
@@ -30,8 +29,8 @@ if(data?.user?.email){
         <div>
         <button onClick={handleGoogleSignIn} className="btn w-full bg-white-500 text-blue-500">
             <div className="flex items-center gap-2">
-                <img className="w-4" src={googleIcon} alt="" />
-                <p className="font-bold">Google</p>
+            <FaGooglePlusG className="text-xl text-red-500" />
+                <p className="font-bold text-red-500">Google</p>
             </div>
         </button>
     </div>

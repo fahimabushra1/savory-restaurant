@@ -1,14 +1,15 @@
-
 import { Link } from "react-router-dom";
 // import { HashLink as Link } from "react-router-hash-link";
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  // const {logOut, user}= useAuth();
+  const {logOut, user}= useAuth();
 
-  // const handleLogout = async ()=>{
-  //   await logOut()
-  // }
+  const handleLogout = async ()=>{
+    await logOut()
+    .then(()=>{})
+    .catch(error=>console.log(error))
+  }
     
         return (
        <div className="relative">
@@ -23,7 +24,7 @@ const Navbar = () => {
               {/* <li><Link to='/about'>About</Link></li> */}
               {/* <li><Link to='/dashboard'>Dashboard</Link></li> */}
               <li><Link to='/register'>Sign Up</Link></li>
-             {/* {
+             {
               user?
               <>
               <span className="text-[#4c0519] font-bold">{user?.email}</span>
@@ -31,7 +32,7 @@ const Navbar = () => {
               </>
               :
              <Link to= "/login">Login</Link>
-             } */}
+             }
             </ul>
           </div>
           <Link to={'/'} className="btn btn-ghost text-xl">SAVORY RESTAURANT</Link>
@@ -41,21 +42,20 @@ const Navbar = () => {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/menu'>Menu</Link></li>
           <li><Link to='/order/salad'>order food</Link></li>
-            <li><Link to='/login'>log in</Link></li>
             <li><Link to='/dashboard'>Dashboard</Link></li>
             <li><Link to='/sign-up'>Sign Up</Link></li>
           </ul>
         </div>
         <div className="navbar-end font-bold text-white">
-       {/* {
+       {
          user?
          <>
          <span className="text-white mr-4">{user?.email}</span>
-         <button onClick={handleLogout} className="btn mr-2">Log out</button>
+         <button onClick={handleLogout} className="mr-2 border-b-4 border-yellow-400 bg-slate-400 rounded-lg py-2 px-4">Log out</button>
          </>
          :
         <Link to= "/login" className="mx-4">Login</Link>
-       } */}
+       }
        <div className="avatar placeholder">
   <div className="bg-[#3c40c6] text-neutral-content w-8  rounded-full">
     <span className="text-xs">UI</span>
