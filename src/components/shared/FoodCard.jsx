@@ -1,12 +1,13 @@
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 
 const FoodCard = ({item}) => {
 const {user} = useAuth();
+const [, refetch] = useCart();
 const navigate = useNavigate();
 const location = useLocation();
 const axiosSecure = useAxiosSecure();
@@ -27,13 +28,14 @@ axiosSecure.post("/carts", cartItem)
   if(res.data.insertedId){
     toast.success(`${name} has been saved successfully`)
   }
+  else{
+    toast.warning("you are not logged in. please log in")
+     navigate("/login", {state:{from: location}})
+  }
 })
-    }
-    else{
-      toast.warning("you are not logged in. please log in")
-       navigate("/login", {state:{from: location}})
-    }
-    }
+ refetch()
+}
+}
     return (
         <div>
             <div className="card bg-base-100 w-96 shadow-xl">
@@ -47,7 +49,7 @@ axiosSecure.post("/carts", cartItem)
     <h2 className="card-title">{name}</h2>
     <p>{recipe}</p>
     <div className="card-actions justify-end">
-      <button onClick={()=> handleAddToCart(item)} className="border-b-4 border-yellow-400 text-white bg-slate-400 rounded-lg py-2 px-4 capitalize">add to cart</button>
+      <button onClick={handleAddToCart} className="border-b-4 border-yellow-400 text-white bg-slate-400 rounded-lg py-2 px-4 capitalize">add to cart</button>
     </div>
   </div>
 </div>
