@@ -44,7 +44,7 @@ const Navbar = () => {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/menu'>Menu</Link></li>
           <li><Link to='/order/salad'>order food</Link></li>
-            <li><Link to='/dashboard'>Dashboard</Link></li>
+            <li><Link to='dashboard'>Dashboard</Link></li>
             <li><Link to='/sign-up'>Sign Up</Link></li>
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
         <div className="indicator">
