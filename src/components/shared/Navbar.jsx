@@ -77,7 +77,7 @@ const Navbar = () => {
        }
        <div className="avatar placeholder">
   <div className="bg-[#3c40c6] text-neutral-content w-8  rounded-full">
-    <span className="text-xs">UI</span>
+    <span className="text-lg"><img src={user?.photoURL} alt="user profile pic" /></span>
   </div>
 </div>
         </div>
