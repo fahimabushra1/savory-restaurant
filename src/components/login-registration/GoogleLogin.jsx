@@ -1,30 +1,25 @@
 import { FaGooglePlusG } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const GoogleLogin = () => {
     const {googleSignIn} = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const handleGoogleSignIn=()=>{
-        googleSignIn().then((data)=>{
-if(data?.user?.email){
+        googleSignIn()
+        .then(data=>{
+            console.log(data.user)
     const userInfo = {
         email:data?.user?.email,
         name:data?.user?.displayName
     }
-    console.log(userInfo)
-    fetch('http://localhost:5000/user',{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-        },
-            body: JSON.stringify(userInfo),
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        localStorage.setItem('token', data?.token)
-    })
-}
-        })
-    }
+    axiosPublic.post('/users', userInfo)
+    .then(res => {
+        console.log(res.data);
+        navigate('/')
+    })})}
     return (
         <div>
         <button onClick={handleGoogleSignIn} className="btn w-full bg-white-500 text-blue-500">

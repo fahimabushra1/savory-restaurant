@@ -9,6 +9,8 @@ import ErrorPage from "../pages/ErrorPage";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Cart from "../pages/dashboard/Cart";
+import PrivateRoute from "./PrivateRoute";
+import AllUsers from "../pages/dashboard/AllUsers";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +46,7 @@ export const router = createBrowserRouter([
     },
     {
       path: "",
-      element:<DashboardLayout/>,
+      element:<PrivateRoute><DashboardLayout/></PrivateRoute>,
       errorElement: <ErrorPage/>,
       children:[
         {
@@ -55,6 +57,11 @@ export const router = createBrowserRouter([
           path:"cart",
           element:<Cart/>,
         },
+        // admin user
+       { 
+        path:"allusers",
+        element:<AllUsers/>,
+      },
       ]
     },
   ]);

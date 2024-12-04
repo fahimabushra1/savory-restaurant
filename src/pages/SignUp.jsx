@@ -4,7 +4,7 @@ import { useEffect} from "react";
 import useAuth from "../hooks/useAuth";
 import FbLogin from "../components/login-registration/FbLogin";
 import HelmetTitle from "../components/shared/HelmetTitle";
-// import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
@@ -15,7 +15,7 @@ const SignUp = () =>{
   console.log(user)
  const navigate = useNavigate();
   const location = useLocation();
-//   const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   const from = location?.state?.from?.pathname || '/'
 
@@ -27,18 +27,27 @@ const onSubmit= data=>{
     console.log(loggedUser);
     updateUserProfile(data.name, data.photoURL, data.phoneNumber)
     .then(()=>{
-      console.log("user profile info updated")
-    })
-    .catch(error =>console.log(error))
-    reset();
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "successfully sign up",
-      showConfirmButton: false,
-      timer: 1500
-    });
-  })}
+      // create user entry in the database
+      const userInfo = {
+        name: data.name,
+        email: data.email
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res =>{
+if(res.data.insertedId){
+  console.log("user added to the database")
+  reset();
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "successfully sign up",
+    showConfirmButton: false,
+    timer: 1500
+  });
+};
+})
+})
+})};
 
   useEffect(()=>{
     if(user){
